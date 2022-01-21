@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const Fib = () => {
@@ -15,7 +15,10 @@ const Fib = () => {
     values: {},
     index: "",
   });
-
+  useEffect(() => {
+    fetchIndexes();
+    fetchValues();
+  }, []);
   const onSubmit = async (e) => {
     e.preventDefault();
     const res = await axios.post("/api/values");
